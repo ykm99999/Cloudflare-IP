@@ -16,8 +16,15 @@ jobs:
       - name: Install dependencies
         run: sudo apt-get update && sudo apt-get install -y python3 curl
 
-      - name: Run IP Selector
-        run: python3 ip_selector.py
+      - name: Generate IP list
+        run: |
+          echo "1.1.1.1" > ip.txt
+          echo "1.0.0.1" >> ip.txt
+          echo "104.16.132.229" >> ip.txt
+          echo "104.17.175.85" >> ip.txt
+          echo "162.159.192.1" >> ip.txt
 
-      - name: Upload to API
+      - name: Upload ip.txt to GitHub repo
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: python3 upload_to_api.py
