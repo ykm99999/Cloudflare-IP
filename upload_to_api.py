@@ -2,7 +2,7 @@ import requests
 
 def read_ips():
     try:
-        with open("ip.txt", "r") as f:  
+        with open("ip.txt", "r") as f:
             return [line.strip() for line in f if line.strip()]
     except FileNotFoundError:
         print("ip.txt 文件未找到，跳过上传")
